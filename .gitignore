@@ -1,0 +1,14 @@
+# macOS Finder
+.DS_Store
+
+# etc
+.idea/
+.vscode/
+.eslintcache
+
+# NPM
+node_modules/
+
+# Distrobution
+dist/
+.env

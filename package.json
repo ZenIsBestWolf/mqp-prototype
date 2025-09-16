@@ -1,0 +1,73 @@
+{
+  "name": "citizens-mqp-prototype",
+  "private": true,
+  "version": "0.0.1",
+  "contributors": [
+    {
+      "name": "Zen Dignan",
+      "email": "zdignan@wpi.edu"
+    },
+    {
+      "name": "Anthony Dokhan",
+      "email": "aadokhan@wpi.edu"
+    },
+    {
+      "name": "Brendan Leu",
+      "email": "brleu@wpi.edu"
+    },
+    {
+      "name": "Spencer Trautz",
+      "email": "sctrautz@wpi.edu"
+    }
+  ],
+  "scripts": {
+    "build:fe": "webpack --config build/webpack.config.js",
+    "start:fe": "webpack serve --config build/webpack.config.js",
+    "lint": "eslint . --cache --color",
+    "clear": "rimraf dist"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "bootstrap": "^5.3.3",
+    "css-loader": "^7.1.2",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "html-webpack-plugin": "^5.6.3",
+    "postcss-loader": "^8.1.1",
+    "prettier": "^3.5.0",
+    "reactstrap": "^9.2.3",
+    "rimraf": "^6.0.1",
+    "sass": "^1.62.0",
+    "sass-loader": "^16.0.4",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "tsc-watch": "^6.2.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.1.5",
+    "react-toastify": "^11.0.3"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 100
+  }
+}
