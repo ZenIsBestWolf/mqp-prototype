@@ -6,25 +6,30 @@ import { ServiceStatusCard } from './components/ServiceStatusCard';
 export const App: FC = () => {
   return (
     <Container>
+      <a href="#main" className="sr-only">
+        Skip to main content
+      </a>
       <NavBar />
-      <Row className="pt-5">
-        {/* Spacer */}
-        <Col xs="2" />
-        <Col xs="8">
-          {/* General Status Indicator */}
-          <h3>Current Status</h3>
-          <GeneralServiceStatus />
-          {/* Service matrix */}
-          <br />
-          <h3>Individual Services</h3>
-          <ServiceMatrix />
-          {/* Statistical graphs */}
-          <br />
-          <h3>Statistics</h3>
-        </Col>
-        {/* Spacer */}
-        <Col xs="2" />
-      </Row>
+      <main>
+        <Row className="pt-5">
+          {/* Spacer */}
+          <Col xl="1" lg="1" />
+          <Col xl="10" md="12">
+            {/* General Status Indicator */}
+            <h3>Current Status</h3>
+            <GeneralServiceStatus />
+            {/* Service matrix */}
+            <br />
+            <h3>Individual Services</h3>
+            <ServiceMatrix />
+            {/* Statistical graphs */}
+            <br />
+            <h3>Statistics</h3>
+          </Col>
+          {/* Spacer */}
+          <Col xl="1" />
+        </Row>
+      </main>
     </Container>
   );
 };
