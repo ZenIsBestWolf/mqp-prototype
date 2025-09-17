@@ -1,5 +1,64 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
+import { Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap';
+import { NavBar } from './components/NavBar';
+import { ServiceStatusCard } from './components/ServiceStatusCard';
 
 export const App: FC = () => {
-  return <div>App content goes here.</div>
-}
+  return (
+    <Container>
+      <NavBar />
+      <Row className="pt-5">
+        {/* Spacer */}
+        <Col xs="2" />
+        <Col xs="8">
+          {/* General Status Indicator */}
+          <h3>Current Status</h3>
+          <GeneralServiceStatus />
+          {/* Service matrix */}
+          <br />
+          <h3>Individual Services</h3>
+          <ServiceMatrix />
+          {/* Statistical graphs */}
+          <br />
+          <h3>Statistics</h3>
+        </Col>
+        {/* Spacer */}
+        <Col xs="2" />
+      </Row>
+    </Container>
+  );
+};
+
+const GeneralServiceStatus: FC = () => {
+  return (
+    <Card className="text-bg-success">
+      <CardBody className="align-middle">
+        <CardTitle tag="h5" className="m-0">
+          All services are operational.
+        </CardTitle>
+      </CardBody>
+    </Card>
+  );
+};
+
+const ServiceMatrix: FC = () => {
+  const serviceList = [
+    'Service A',
+    'Service B',
+    'Service C',
+    'Service D',
+    'Service E',
+    'Service F',
+  ] as const;
+  return (
+    <Container>
+      <Row className="row-cols-2">
+        {serviceList.map((s, idx) => (
+          <Col className="p-1" key={idx}>
+            <ServiceStatusCard serviceName={s} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+};
