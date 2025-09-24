@@ -1,5 +1,5 @@
 {
-  "include": ["./", "../shared"],
+  "include": ["./"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
@@ -10,7 +10,7 @@
     "strict": true,
     "strictNullChecks": true,
     "jsx": "react",
-    "outDir": "../../dist",
+    "outDir": "../dist",
     "module": "ESNext",
     "target": "ES2020",
     "lib": ["ES2021", "DOM", "DOM.Iterable", "ES2022"],

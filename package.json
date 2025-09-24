@@ -21,8 +21,8 @@
     }
   ],
   "scripts": {
-    "build:fe": "webpack --config build/webpack.config.js",
-    "start:fe": "webpack serve --config build/webpack.config.js",
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack serve --config webpack.config.js",
     "lint": "eslint . --cache --color",
     "clear": "rimraf dist"
   },

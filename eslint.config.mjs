@@ -18,7 +18,7 @@ export default tseslint.config({ ignores: ['dist'] }, eslintPrettierRecommended,
     ecmaVersion: 2020,
     globals: globals.browser,
     parserOptions: {
-      project: ['./src/frontend/tsconfig.json', './src/backend/tsconfig.json'],
+      project: ['./src/tsconfig.json'],
       tsconfigRootDir: import.meta.dirname,
     },
   },
