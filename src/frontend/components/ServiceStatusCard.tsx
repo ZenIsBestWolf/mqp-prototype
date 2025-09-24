@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Card, CardBody } from 'reactstrap';
 import { MaterialIcon } from './MaterialIcon';
-import { ServiceStatus } from '../../shared/status';
+import { ServiceStatus } from '../utils';
 
 export const ServiceStatusCard: FC<{
   readonly serviceName: string;

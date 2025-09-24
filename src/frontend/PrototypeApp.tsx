@@ -2,8 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap';
 import { NavBar } from './components/NavBar';
 import { ServiceStatusCard } from './components/ServiceStatusCard';
-import { ServiceStatus } from '../shared/status';
-import { ApplicationContext, ApplicationData, DEFAULT_APP_VALUES } from './provider';
+import { ApplicationContext, ApplicationData, DEFAULT_APP_VALUES, ServiceStatus } from './utils';
 
 export const App: FC = () => {
   const [application, setApplication] = useState<ApplicationData>(DEFAULT_APP_VALUES);

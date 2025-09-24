@@ -1,5 +1,7 @@
 import { createContext, useContext } from 'react';
-import { ServiceStatus } from '../shared/status';
+
+export const statuses = ['up', 'partial', 'down'] as const;
+export type ServiceStatus = (typeof statuses)[number];
 
 export interface ApplicationData {
   readonly serviceMap: Record<string, ServiceStatus>;

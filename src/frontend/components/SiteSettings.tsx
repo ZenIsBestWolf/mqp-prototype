@@ -14,8 +14,13 @@ import {
 } from 'reactstrap';
 import { MaterialIcon } from './MaterialIcon';
 import React from 'react';
-import { ApplicationContext, ApplicationData, DEFAULT_APP_VALUES } from '../provider';
-import { ServiceStatus, statuses } from '../../shared/status';
+import {
+  ApplicationContext,
+  ApplicationData,
+  DEFAULT_APP_VALUES,
+  ServiceStatus,
+  statuses,
+} from '../utils';
 
 export const SiteSettings: FC = () => {
   const [open, setOpen] = useState(false);
