@@ -27,7 +27,7 @@ $font-family-base: "Fira Sans", var(--#{$prefix}font-sans-serif);
 $border-radius: 1rem;
 $border-width: 2px;
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 .sr-only {
   position: absolute;
