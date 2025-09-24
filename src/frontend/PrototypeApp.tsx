@@ -27,7 +27,7 @@ export const App: FC = () => {
         </a>
         <NavBar />
         <main>
-          <Row className="pt-5">
+          <Row>
             {/* Spacer */}
             <Col xl="1" lg="1" />
             <Col xl="10" md="12">
