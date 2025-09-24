@@ -1,7 +1,7 @@
 @use 'sass:color';
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-$prefix: bank;
+$prefix: bank-;
 
 $enable-shadows: false;
 $color-mode-type: media-query; // Bootstrap media query for light/dark mode
@@ -11,7 +11,7 @@ $primary: #008555; // Citizens Green
 $secondary: #6a0dad;
 $success: $primary;
 $info: #044da2;
-$warning: #e2e61c;
+$warning: #d98200;
 $danger: #bc2a2a;
 $light: #f0f0e6;
 $dark: #231f20;
@@ -19,7 +19,8 @@ $dark: #231f20;
 // Theme Styles
 $body-bg: #ffffff;
 $body-bg-dark: color.adjust($primary, $hue: -25%, $lightness: -23%);
-$body-emphasis-color: $success;
+$border-color-dark: $primary;
+$body-emphasis-color: $primary;
 
 $font-family-base: "Fira Sans", var(--#{$prefix}font-sans-serif);
 
