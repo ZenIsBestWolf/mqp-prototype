@@ -16,3 +16,11 @@ a {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+.btn .material-icons
+{
+  display: inline-block;
+  vertical-align: middle;
+  padding-bottom: 0;
+  margin-top: -1px;
+}

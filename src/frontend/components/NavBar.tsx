@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { Button, Nav, Navbar, NavbarBrand, NavItem } from 'reactstrap';
 import { MaterialIcon } from './MaterialIcon';
+import { SiteSettings } from './SiteSettings';
+import { HorizontalStack } from './Stacks';
 
 export const NavBar: FC = () => {
   return (
@@ -10,9 +12,14 @@ export const NavBar: FC = () => {
         <span className="ps-1">Bank</span>
       </NavbarBrand>
       <Nav>
-        <NavItem>
-          <Button color="primary">Subscribe to Updates</Button>
-        </NavItem>
+        <HorizontalStack gap={2}>
+          <NavItem>
+            <SiteSettings />
+          </NavItem>
+          <NavItem>
+            <Button color="primary">Subscribe to Updates</Button>
+          </NavItem>
+        </HorizontalStack>
       </Nav>
     </Navbar>
   );

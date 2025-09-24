@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap';
 import { NavBar } from './components/NavBar';
 import { ServiceStatusCard } from './components/ServiceStatusCard';
+import { ServiceStatus } from '../shared/status';
 
 export const App: FC = () => {
   return (
@@ -17,7 +18,7 @@ export const App: FC = () => {
           <Col xl="10" md="12">
             {/* General Status Indicator */}
             <h3>Current Status</h3>
-            <GeneralServiceStatus />
+            <ServiceStatusMessage status="up" />
             {/* Service matrix */}
             <br />
             <h3>Individual Services</h3>
@@ -34,12 +35,50 @@ export const App: FC = () => {
   );
 };
 
-const GeneralServiceStatus: FC = () => {
+const ServiceStatusMessage: FC<{ readonly status: ServiceStatus }> = ({ status }) => {
+  switch (status) {
+    case 'up': {
+      return <AllServicesOK />;
+    }
+    case 'partial': {
+      return <SomeServicesDown />;
+    }
+    case 'down': {
+      return <MajorOutage />;
+    }
+  }
+};
+
+const AllServicesOK: FC = () => {
   return (
     <Card className="text-bg-success">
       <CardBody className="align-middle">
         <CardTitle tag="h5" className="m-0">
           All services are operational.
+        </CardTitle>
+      </CardBody>
+    </Card>
+  );
+};
+
+const SomeServicesDown: FC = () => {
+  return (
+    <Card className="text-bg-warning">
+      <CardBody className="align-middle">
+        <CardTitle tag="h5" className="m-0">
+          Some services are experiencing degraded performance.
+        </CardTitle>
+      </CardBody>
+    </Card>
+  );
+};
+
+const MajorOutage: FC = () => {
+  return (
+    <Card className="text-bg-danger">
+      <CardBody className="align-middle">
+        <CardTitle tag="h5" className="m-0">
+          Most or all services are experiencing a major outage.
         </CardTitle>
       </CardBody>
     </Card>
@@ -55,12 +94,16 @@ const ServiceMatrix: FC = () => {
     'Service E',
     'Service F',
   ] as const;
+
   return (
     <Container>
       <Row className="row-cols-2">
         {serviceList.map((s, idx) => (
           <Col className="p-1" key={idx}>
-            <ServiceStatusCard serviceName={s} />
+            <ServiceStatusCard
+              status={idx % 3 === 0 ? 'down' : idx % 3 === 1 ? 'partial' : 'up'}
+              serviceName={s}
+            />
           </Col>
         ))}
       </Row>
