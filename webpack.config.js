@@ -6,10 +6,10 @@ import { hostname } from 'os';
 import { fileURLToPath } from 'url';
 
 const prod = process.env.NODE_ENV === 'production';
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const dir = dirname(fileURLToPath(import.meta.url));
 
 export default {
-  context: path.join(__dirname, 'src'),
+  context: path.join(dir, 'src'),
   devtool: 'source-map',
   entry: './index.tsx',
   mode: prod ? 'production' : 'development',
