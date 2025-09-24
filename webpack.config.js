@@ -20,7 +20,7 @@ export default {
   output: {
     chunkFilename: '[name].[contenthash].js',
     filename: '[name].[contenthash].js',
-    path: path.join(__dirname, 'dist'),
+    path: path.join(dir, 'dist'),
   },
   optimization: prod
     ? {
