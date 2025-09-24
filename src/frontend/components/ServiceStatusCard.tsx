@@ -4,7 +4,7 @@ import { MaterialIcon } from './MaterialIcon';
 
 export const ServiceStatusCard: FC<{ readonly serviceName: string }> = ({ serviceName }) => {
   return (
-    <Card>
+    <Card className="border-success-subtle bg-success-subtle">
       <CardBody>
         <CardText>
           <span>{serviceName}</span>
