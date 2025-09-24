@@ -24,12 +24,10 @@ $body-emphasis-color: $primary;
 
 $font-family-base: "Fira Sans", var(--#{$prefix}font-sans-serif);
 
-// $box-shadow: 3px 3px 35px -2px rgba($dark, 0.1);
 $border-radius: 1rem;
 $border-width: 2px;
-// $card-box-shadow: $box-shadow;
 
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 .sr-only {
   position: absolute;
