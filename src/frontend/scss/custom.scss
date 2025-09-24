@@ -3,7 +3,7 @@
 
 $prefix: bank;
 
-$enable-shadows: true;
+$enable-shadows: false;
 $color-mode-type: media-query; // Bootstrap media query for light/dark mode
 
 // Theme Colors
@@ -19,20 +19,16 @@ $dark: #231f20;
 // Theme Styles
 $body-bg: #ffffff;
 $body-bg-dark: color.adjust($primary, $hue: -25%, $lightness: -23%);
+$body-emphasis-color: $success;
 
 $font-family-base: "Fira Sans", var(--#{$prefix}font-sans-serif);
 
-$box-shadow: 3px 3px 35px -2px rgba(27, 27, 27, 0.1);
+// $box-shadow: 3px 3px 35px -2px rgba($dark, 0.1);
 $border-radius: 1rem;
-$card-box-shadow: $box-shadow;
-
-$body-emphasis-color: $success;
+$border-width: 2px;
+// $card-box-shadow: $box-shadow;
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-
-a {
-  text-decoration: none;
-}
 
 .sr-only {
   position: absolute;
