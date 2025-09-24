@@ -22,7 +22,11 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Publish
+    - name: Upload
       uses: actions/upload-pages-artifact@v4.0.0
       with:
         path: dist/
+
+    - name: Deploy
+      id: deployment
+      uses: actions/deploy-pages@v4
