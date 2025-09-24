@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
-import { Button, Nav, Navbar, NavbarBrand, NavItem } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavItem } from 'reactstrap';
 import { MaterialIcon } from './MaterialIcon';
 import { SiteSettings } from './SiteSettings';
 import { HorizontalStack } from './Stacks';
+import { SubscribeButton } from './SubscribeButton';
 
 export const NavBar: FC = () => {
   return (
@@ -17,7 +18,7 @@ export const NavBar: FC = () => {
             <SiteSettings />
           </NavItem>
           <NavItem>
-            <Button color="primary">Subscribe to Updates</Button>
+            <SubscribeButton />
           </NavItem>
         </HorizontalStack>
       </Nav>

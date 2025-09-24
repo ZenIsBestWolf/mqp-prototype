@@ -11,6 +11,6 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    <ToastContainer autoClose={7000} draggable newestOnTop pauseOnFocusLoss />
+    <ToastContainer autoClose={3000} draggable newestOnTop pauseOnFocusLoss />
   </StrictMode>,
 );
