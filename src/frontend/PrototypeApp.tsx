@@ -3,20 +3,10 @@ import { Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap';
 import { NavBar } from './components/NavBar';
 import { ServiceStatusCard } from './components/ServiceStatusCard';
 import { ServiceStatus } from '../shared/status';
-import { ApplicationContext, ApplicationData } from './provider';
+import { ApplicationContext, ApplicationData, DEFAULT_APP_VALUES } from './provider';
 
 export const App: FC = () => {
-  const [application, setApplication] = useState<ApplicationData>({
-    serviceMap: {
-      'Service A': 'up',
-      'Service B': 'up',
-      'Service C': 'partial',
-      'Service D': 'up',
-      'Service E': 'down',
-      'Service F': 'up',
-    },
-    globalServiceStatus: 'partial',
-  });
+  const [application, setApplication] = useState<ApplicationData>(DEFAULT_APP_VALUES);
 
   useEffect(() => {
     const settings = localStorage.getItem('prototypeSettings');
@@ -43,7 +33,10 @@ export const App: FC = () => {
             <Col xl="10" md="12">
               {/* General Status Indicator */}
               <h3>Current Status</h3>
-              <ServiceStatusMessage status={application.globalServiceStatus} />
+              <ServiceStatusMessage
+                status={application.globalServiceStatus}
+                messageOverride={application.serviceMessage}
+              />
               {/* Service matrix */}
               <br />
               <h3>Individual Services</h3>

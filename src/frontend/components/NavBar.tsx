@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Nav, Navbar, NavbarBrand, NavItem } from 'reactstrap';
+import { Button, Nav, Navbar, NavbarBrand, NavItem } from 'reactstrap';
 import { MaterialIcon } from './MaterialIcon';
 import { SiteSettings } from './SiteSettings';
 import { HorizontalStack } from './Stacks';
@@ -14,6 +14,17 @@ export const NavBar: FC = () => {
       </NavbarBrand>
       <Nav>
         <HorizontalStack gap={2}>
+          <NavItem>
+            <Button
+              rel="noreferrer"
+              target="_blank"
+              tag="a"
+              href="https://github.com/ZenIsBestWolf/mqp-prototype"
+              color="dark"
+            >
+              <MaterialIcon name="code" /> View Source
+            </Button>
+          </NavItem>
           <NavItem>
             <SiteSettings />
           </NavItem>

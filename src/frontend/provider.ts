@@ -16,3 +16,15 @@ export const useApp = () => {
   const { application } = useContext(ApplicationContext);
   return application;
 };
+
+export const DEFAULT_APP_VALUES: ApplicationData = {
+  serviceMap: {
+    'Service A': 'up',
+    'Service B': 'up',
+    'Service C': 'partial',
+    'Service D': 'up',
+    'Service E': 'down',
+    'Service F': 'up',
+  },
+  globalServiceStatus: 'partial',
+};

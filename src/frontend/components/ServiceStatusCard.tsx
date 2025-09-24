@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Card, CardBody, CardText } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
 import { MaterialIcon } from './MaterialIcon';
 import { ServiceStatus } from '../../shared/status';
 
@@ -30,12 +30,10 @@ export const ServiceStatusCard: FC<{
   return (
     <Card>
       <CardBody>
-        <CardText>
-          <span>{serviceName}</span>
-          <div className="d-inline-block float-end">
-            <MaterialIcon className={`align-text-top text-${textColor}`} name={materialIcon} />
-          </div>
-        </CardText>
+        <span>{serviceName}</span>
+        <div className="d-inline-block float-end">
+          <MaterialIcon className={`align-text-top text-${textColor}`} name={materialIcon} />
+        </div>
       </CardBody>
     </Card>
   );

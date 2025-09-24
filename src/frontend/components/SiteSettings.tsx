@@ -1,7 +1,21 @@
-import { FC, useState } from 'react';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { FC, useCallback, useContext, useState } from 'react';
+import {
+  Button,
+  Col,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Row,
+} from 'reactstrap';
 import { MaterialIcon } from './MaterialIcon';
 import React from 'react';
+import { ApplicationContext, ApplicationData, DEFAULT_APP_VALUES } from '../provider';
+import { ServiceStatus, statuses } from '../../shared/status';
 
 export const SiteSettings: FC = () => {
   const [open, setOpen] = useState(false);
@@ -15,29 +29,145 @@ export const SiteSettings: FC = () => {
       >
         <MaterialIcon name="settings" />
       </Button>
-      <SiteSettingsModal
-        close={() => {
-          setOpen(false);
-        }}
-        open={open}
-      />
+      {open && (
+        <SiteSettingsModal
+          close={() => {
+            setOpen(false);
+          }}
+        />
+      )}
     </>
   );
 };
 
-const SiteSettingsModal: FC<{ readonly open: boolean; readonly close: () => void }> = ({
-  open,
-  close,
-}) => {
+const SiteSettingsModal: FC<{ readonly close: () => void }> = ({ close }) => {
+  const { application, setApplication } = useContext(ApplicationContext);
+  const [appState, setAppState] = useState(application);
+
+  const submit = useCallback(() => {
+    setApplication({
+      ...appState,
+      serviceMessage: appState.serviceMessage === '' ? undefined : appState.serviceMessage,
+    });
+    close();
+  }, [appState, close, setApplication]);
+
+  const updateApplication = useCallback(
+    (k: keyof ApplicationData, v: ApplicationData[keyof ApplicationData]) => {
+      setAppState((oldApp) => ({
+        ...oldApp,
+        [k]: v,
+      }));
+    },
+    [setAppState],
+  );
+
+  const updateServiceMap = useCallback(
+    (service: string, status: ServiceStatus) => {
+      setAppState((oldApp) => ({
+        ...oldApp,
+        serviceMap: {
+          ...oldApp.serviceMap,
+          [service]: status,
+        },
+      }));
+    },
+    [setAppState],
+  );
+
   return (
-    <Modal isOpen={open}>
+    <Modal isOpen>
       <ModalHeader>Prototype Settings</ModalHeader>
-      <ModalBody>Settings would go here.</ModalBody>
+      <ModalBody>
+        <Form>
+          <FormGroup>
+            <p>Service Matrix</p>
+            <Row className="row-cols-2">
+              {Object.keys(appState.serviceMap).map((s) => (
+                <Col key={s}>
+                  <ServiceInput
+                    setStatus={(v) => {
+                      updateServiceMap(s, v);
+                    }}
+                    serviceName={s}
+                    currentStatus={appState.serviceMap[s]}
+                  />
+                </Col>
+              ))}
+            </Row>
+          </FormGroup>
+          <FormGroup>
+            <ServiceInput
+              setStatus={(v) => {
+                updateApplication('globalServiceStatus', v);
+              }}
+              serviceName="Global Service Status"
+              currentStatus={appState.globalServiceStatus}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="msgOverride">Custom Message Override</Label>
+            <Input
+              id="msgOverride"
+              type="text"
+              placeholder="Enter text to override default 'Current Status' message..."
+              defaultValue={appState.serviceMessage}
+              onChange={(e) => {
+                updateApplication('serviceMessage', e.currentTarget.value);
+              }}
+            />
+          </FormGroup>
+        </Form>
+      </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={close}>
-          Close
+        <Button
+          color="danger"
+          className="me-auto"
+          onClick={() => {
+            setApplication(DEFAULT_APP_VALUES);
+            close();
+          }}
+        >
+          Reset to Default
+        </Button>
+        <Button color="secondary" onClick={close}>
+          Cancel
+        </Button>
+        <Button color="primary" onClick={submit}>
+          Save
         </Button>
       </ModalFooter>
     </Modal>
+  );
+};
+
+const ServiceInput: FC<{
+  readonly serviceName: string;
+  readonly currentStatus: ServiceStatus;
+  readonly setStatus: (status: ServiceStatus) => void;
+}> = ({ serviceName, currentStatus, setStatus }) => {
+  const displayNames: Record<ServiceStatus, string> = {
+    up: 'Online',
+    partial: 'Degraded',
+    down: 'Offline',
+  };
+  return (
+    <>
+      <Label for={`${serviceName}-select-input`}>{serviceName}</Label>
+      <Input
+        onChange={(e) => {
+          setStatus(e.currentTarget.value as ServiceStatus);
+        }}
+        type="select"
+        id={`${serviceName}-select-input`}
+        defaultValue={currentStatus}
+      >
+        {statuses.map((s) => (
+          <option value={s} key={s}>
+            {displayNames[s]}
+          </option>
+        ))}
+      </Input>
+    </>
   );
 };
