@@ -50,6 +50,11 @@ module.exports = {
       },
     ],
     hot: true,
+    client: {
+      overlay: {
+        warnings: false,
+      },
+    },
   },
   plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
   module: {

@@ -8,31 +8,31 @@ export const ServiceStatusCard: FC<{
   readonly status: ServiceStatus;
 }> = ({ serviceName, status }) => {
   let materialIcon = '';
-  let textColor = '';
+  let themeColor = '';
 
   switch (status) {
     case 'up': {
       materialIcon = 'check_circle';
-      textColor = 'success';
+      themeColor = 'success';
       break;
     }
     case 'partial': {
       materialIcon = 'error';
-      textColor = 'warning';
+      themeColor = 'warning';
       break;
     }
     case 'down': {
       materialIcon = 'cancel';
-      textColor = 'danger';
+      themeColor = 'danger';
       break;
     }
   }
   return (
-    <Card>
+    <Card className={`border-${themeColor}-subtle bg-${themeColor}-subtle`}>
       <CardBody>
         <span>{serviceName}</span>
         <div className="d-inline-block float-end">
-          <MaterialIcon className={`align-text-top text-${textColor}`} name={materialIcon} />
+          <MaterialIcon className={`align-text-top text-${themeColor}`} name={materialIcon} />
         </div>
       </CardBody>
     </Card>
