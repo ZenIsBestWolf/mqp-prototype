@@ -109,10 +109,10 @@ export const StatisticGraph: FC = () => {
 
   console.log(metrics);
 
-  const labels = metrics.map((m) => new Date(m.timestamp).toLocaleTimeString())
-  const data = metrics.map((m) => m.value)
-  const min = Math.min(...metrics.map((m) => m.value))
-  const max = Math.max(...metrics.map((m) => m.value))
+  const labels = metrics.map((m) => new Date(m.timestamp).toLocaleTimeString());
+  const data = metrics.map((m) => m.value);
+  const min = Math.min(...metrics.map((m) => m.value));
+  const max = Math.max(...metrics.map((m) => m.value));
   const padding = (max - min) / 2;
 
   const scaleYmin = min - padding;
@@ -126,7 +126,7 @@ export const StatisticGraph: FC = () => {
           {
             label: 'API Latency',
             backgroundColor: `#f0f0e6`,
-            
+
             borderColor: `#008555`,
             borderJoinStyle: 'round',
             data: data,
