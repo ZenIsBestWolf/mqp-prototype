@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import { Card, CardBody, Col, Container, Row } from 'reactstrap';
 import { NavBar } from './components/NavBar';
 import { ApplicationContext, ApplicationData, DEFAULT_APP_VALUES } from './utils';
 import { ServiceMatrix, ServiceStatusMessage, StatisticGraph } from './containers/MainGraph';
@@ -40,7 +40,11 @@ export const App: FC = () => {
               {/* Statistical graphs */}
               <br />
               <h3>Statistics</h3>
-              <StatisticGraph />
+              <Card className={`border-success-subtle bg-success-subtle`}>
+                <CardBody>
+                  <StatisticGraph />
+                </CardBody>
+              </Card>
             </Col>
             {/* Spacer */}
             <Col xl="1" />

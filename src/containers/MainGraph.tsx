@@ -109,16 +109,27 @@ export const StatisticGraph: FC = () => {
 
   console.log(metrics);
 
+  const labels = metrics.map((m) => new Date(m.timestamp).toLocaleTimeString())
+  const data = metrics.map((m) => m.value)
+  const min = Math.min(...metrics.map((m) => m.value))
+  const max = Math.max(...metrics.map((m) => m.value))
+  const padding = (max - min) / 2;
+
+  const scaleYmin = min - padding;
+  const scaleYmax = max + padding;
+
   return (
     <Line
       data={{
-        labels: metrics.map((m) => new Date(m.timestamp).toLocaleTimeString()),
+        labels: labels,
         datasets: [
           {
             label: 'API Latency',
-            backgroundColor: `rgb(255, 255, 255)`,
-            borderColor: `rgb(255, 255, 255)`,
-            data: metrics.map((m) => m.value),
+            backgroundColor: `#f0f0e6`,
+            
+            borderColor: `#008555`,
+            borderJoinStyle: 'round',
+            data: data,
             // fill: true,
           },
         ],
@@ -132,8 +143,8 @@ export const StatisticGraph: FC = () => {
         responsive: true,
         scales: {
           y: {
-            min: 80,
-            max: Math.max(...metrics.map((m) => m.value)) + 30,
+            min: scaleYmin,
+            max: scaleYmax,
             title: { display: true, text: 'Response Time (ms)' },
           },
           x: {
