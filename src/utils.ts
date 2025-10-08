@@ -19,6 +19,9 @@ export const useApp = () => {
   return application;
 };
 
+export const useTheme = () =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches ? `dark` : `light`;
+
 export const DEFAULT_APP_VALUES: ApplicationData = {
   serviceMap: {
     'Service A': 'up',
